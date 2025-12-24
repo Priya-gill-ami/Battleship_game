@@ -1,0 +1,92 @@
+This project is built using Object-Oriented Programming and divided into seven Python files. 
+Each file handles one clear responsibility, which keeps the whole project organized and easier to debug. 
+The goal was to design a Battleship game that allows two players to place ships, guess coordinates, and play until one player sinks all ships.
+
+Project Structure (7 Modules)
+1. ship.py
+
+This file has the Ship class.
+It stores the ship name, size, its coordinates, and how many hits it has taken.
+It also has two important functions:
+
+register_hit() to record when the ship is hit
+
+is_sunk() to check if the ship is fully destroyed
+
+The ship manages its own data (encapsulation).
+----------------------------------------------------------------
+
+2. coordinate.py
+
+This file helps convert inputs like "A5" into numerical row/column values.
+It checks if the coordinate is valid, inside the board, and properly formatted.
+Having a separate file keeps the coordinate logic clean.
+
+-----------------------------------------------------------------
+
+3. board.py
+
+The Board class stores the full grid, all ships, and hit/miss information.
+It checks if a ship can be placed, makes sure they don’t overlap, and processes attacks.
+It also prints boards in two modes:
+
+player’s real board
+
+guess board (only shows hits/misses)
+
+All game calculations mainly happen here.
+
+--------------------------------------------------------------------
+
+4. player.py
+
+This file holds the Player class.
+Each player has a:
+name
+board
+list of ships
+guess counter
+
+The player is responsible for placing ships and handling guesses. 
+It also checks if the player has lost the game.
+ ---------------------------------------------------------------------
+
+5. fileStore.py
+
+This module works like a memory for the game.
+It stores:
+winner name
+number of turns
+best score
+This allows the game to show the high score each time it starts.
+--------------------------------------------------------------------------
+
+6. game.py
+
+This is the game controller.
+It switches turns, validates guesses, prints boards, checks win conditions, and talks to fileStore.py to save results.
+It separates main game logic from player logic, which keeps the project cleaner.
+---------------------------------------------------------------------------------
+7. main.py
+
+This is the file the user runs.
+It shows the welcome message, loads the high score, gets player names, starts ship placement, and begins the game loop.
+After someone wins, it shows final boards and asks if players want another match.
+-------------------------------------------------------------
+Flow of the Program
+
+Game starts → high score is displayed
+Players enter names
+Each player places ships one by one
+Game loop begins
+Players guess coordinates, hit or miss
+Continue until all ships of one player are sunk
+Winner is announced → result saved to file
+Ask to play again
+
+OOP concepu
+
+Encapsulation: Each class manages its own data (Ship knows hits, Board knows grid, etc.)
+
+Polymorphism: Common function names like print_board() used in different ways
+
